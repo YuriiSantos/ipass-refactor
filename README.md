@@ -1,5 +1,7 @@
 # Otimização do Relatório de Passagem de Plantão
 
+<img width="1120" height="790" alt="image" src="https://github.com/user-attachments/assets/8d99d693-3f79-46ee-b23d-e31e86d618d1" />
+
 ## O Problema que Enfrentei
 
 O relatório de passagem de plantão estava com sérios problemas de performance. A query original era uma verdadeira "monster query" com 46 campos diferentes, mais de 25 LEFT JOINs complexos e várias subconsultas usando ROW_NUMBER() repetidamente. Para piorar, não havia índices específicos nas tabelas que mais sofriam com consultas pesadas.

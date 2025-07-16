@@ -127,7 +127,17 @@ SELECT  DISTINCT t1.nr_atendimento                                AS atendimento
        ,t1.dt_entrada                                             AS dt_entrada
        ,t1.dt_previsto_alta                                       AS previsao_alta
        ,obter_idade(t4.dt_nascimento,SYSDATE,'S')                 AS idade
+<<<<<<< HEAD
        ,EXTRACT( YEAR FROM SYSDATE ) - EXTRACT( YEAR FROM T4.DT_NASCIMENTO ) AS FILTRO_IDADE, TRUNC(SYSDATE - t2.dt_entrada_unidade) || 'd ' || TRUNC(MOD((SYSDATE - t2.dt_entrada_unidade) * 24, 24)) || 'h ' || TO_CHAR( TRUNC( MOD((SYSDATE - t2.dt_entrada_unidade) * 24 * 60, 60) ), 'FM00' ) || 'm' AS tempo_leito, CEIL(SYSDATE - t1.dt_entrada) || ' Dias' AS dias_internacao, CASE WHEN OBTER_DESC_CID_DOENCA( SUBSTR( OBTER_CID_ATENDIMENTO(T1.NR_ATENDIMENTO, 'P'), 1, 10 ) ) IS NULL THEN 'SEM DIAGNOSTICO' ELSE UPPER( OBTER_DESC_CID_DOENCA( SUBSTR( OBTER_CID_ATENDIMENTO(T1.NR_ATENDIMENTO, 'P'), 1, 10 ) ) ) END AS diagnostico_ds, CASE WHEN OBTER_ULTIMO_SINAL_VITAL_PESO(T4.CD_PESSOA_FISICA) = ' Kg' THEN NULL ELSE OBTER_ULTIMO_SINAL_VITAL_PESO(T4.CD_PESSOA_FISICA) END AS peso, OBTER_CLINICA(T1.IE_CLINICA) AS clinica, t4.cd_pessoa_fisica
+=======
+       ,EXTRACT( YEAR FROM SYSDATE ) - EXTRACT( YEAR FROM T4.DT_NASCIMENTO ) AS FILTRO_IDADE
+       ,TRUNC(SYSDATE - t2.dt_entrada_unidade) || 'd ' || TRUNC(MOD((SYSDATE - t2.dt_entrada_unidade) * 24, 24)) || 'h ' || TO_CHAR( TRUNC( MOD((SYSDATE - t2.dt_entrada_unidade) * 24 * 60, 60) ), 'FM00' ) || 'm' AS tempo_leito
+       ,CEIL(SYSDATE - t1.dt_entrada) || ' Dias' AS dias_internacao
+       ,CASE WHEN OBTER_DESC_CID_DOENCA( SUBSTR( OBTER_CID_ATENDIMENTO(T1.NR_ATENDIMENTO, 'P'), 1, 10 ) ) IS NULL THEN 'SEM DIAGNOSTICO' ELSE UPPER( OBTER_DESC_CID_DOENCA( SUBSTR( OBTER_CID_ATENDIMENTO(T1.NR_ATENDIMENTO, 'P'), 1, 10 ) ) ) END AS diagnostico_ds
+       ,CASE WHEN OBTER_ULTIMO_SINAL_VITAL_PESO(T4.CD_PESSOA_FISICA) = ' Kg' THEN NULL ELSE OBTER_ULTIMO_SINAL_VITAL_PESO(T4.CD_PESSOA_FISICA) END AS peso
+       ,OBTER_CLINICA(T1.IE_CLINICA) AS clinica
+       ,t4.cd_pessoa_fisica
+>>>>>>> 33ef21edb1c901c65edd33d0da9177673a4bd51f
 FROM atendimento_paciente t1
 INNER JOIN unidade_atendimento t2
 ON t1.nr_atendimento = t2.nr_atendimento
